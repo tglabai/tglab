@@ -28,4 +28,10 @@ const products = [
   { name: 'AOC CQ32G1 Curved Monitor', image: defaultImage, link: 'https://amzn.to/3Yph1I2' },
   { name: 'Glorious Model O Mouse', image: defaultImage, link: 'https://amzn.to/3YVpra6' }
 ];
-  
+$scope.products.forEach(product => {
+  const safeName = product.name.toLowerCase()
+    .replace(/[^a-z0-9]/gi, '-')  // Replace non-alphanumeric with dashes
+    .replace(/-+/g, '-')          // Replace multiple dashes with one
+    .replace(/^-|-$/g, '');       // Trim dashes at start/end
+  product.image = "assets/images/" + safeName + ".jpg";
+});

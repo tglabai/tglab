@@ -1,4 +1,4 @@
-{ name: 'Logitech G502 Hero Mouse', image: defaultImage, link: 'https://www.amazon.com/gp/aw/d/B0B66RHD7B?th=1&tag=tglab0f-20' },
+        { name: 'Logitech G502 Hero Mouse', image: defaultImage, link: 'https://www.amazon.com/gp/aw/d/B0B66RHD7B?th=1&tag=tglab0f-20' },
         { name: 'Razer BlackWidow V3 Keyboard', image: defaultImage, link: 'https://amzn.to/42DKL6B' },
         { name: 'Xbox Series X', image: defaultImage, link: 'https://amzn.to/3YT81eg' },
         { name: 'PlayStation 5', image: defaultImage, link: 'https://amzn.to/4cYZwEv' },

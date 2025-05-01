@@ -4,11 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>All Products - TechGroup</title>
+
+  <!-- AngularJS -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body ng-controller="MainController">
 
@@ -24,7 +31,6 @@
   </nav>
 
   <main class="container">
-
     <section class="featured-products">
       <div class="product-grid">
         <div class="product" ng-repeat="product in products">
@@ -34,47 +40,59 @@
         </div>
       </div>
     </section>
-
   </main>
 
   <footer class="site-footer">
     <p>&copy; 2025 TGLab Store. All Rights Reserved.</p>
   </footer>
 
+  <!-- Custom AngularJS Logic -->
   <script src="assets/js/app.js"></script>
+
   <script>
     const app = angular.module('techGroupApp', []);
     app.controller('MainController', function ($scope) {
-      const defaultImage = 'assets/images/default.jpg'; // Local image fallback
-      $scope.products = [{ name: 'Logitech G502 Hero Mouse', image: defaultImage, link: 'https://www.amazon.com/gp/aw/d/B0B66RHD7B?th=1&tag=tglab0f-20' },
-        { name: 'Razer BlackWidow V3 Keyboard', image: defaultImage, link: 'https://amzn.to/42DKL6B' },
-        { name: 'Xbox Series X', image: defaultImage, link: 'https://amzn.to/3YT81eg' },
-        { name: 'PlayStation 5', image: defaultImage, link: 'https://amzn.to/4cYZwEv' },
-        { name: 'Nintendo Switch OLED', image: defaultImage, link: 'https://amzn.to/3EMs3Au' },
-        { name: 'Elgato Stream Deck', image: defaultImage, link: 'https://amzn.to/42U8Swq' },
-        { name: 'HyperX Cloud II Headset', image: defaultImage, link: 'https://amzn.to/438AzTF' },
-        { name: 'Corsair K95 RGB Platinum', image: defaultImage, link: 'https://amzn.to/4k0ZXR8' },
-        { name: 'ASUS ROG Strix Gaming Laptop', image: defaultImage, link: 'https://amzn.to/3GzVLcE' },
-        { name: 'MSI Gaming Monitor', image: defaultImage, link: 'https://amzn.to/3Gzuzuo' },
-        { name: 'SteelSeries Arctis Pro Wireless', image: defaultImage, link: 'https://amzn.to/4cVaNpp' },
-        { name: 'Logitech C920 Webcam', image: defaultImage, link: 'https://amzn.to/42yIRnI' },
-        { name: 'Razer DeathAdder V2', image: defaultImage, link: 'https://amzn.to/4lPvMhv' },
-        { name: 'Blue Yeti Microphone', image: defaultImage, link: 'https://amzn.to/4iH2TBd' },
-        { name: 'AMD Ryzen 9 5900X', image: defaultImage, link: 'https://amzn.to/3YlSNyl' },
-        { name: 'NVIDIA GeForce RTX 3080', image: defaultImage, link: 'https://amzn.to/4cVb8sb' },
-        { name: 'ASUS TUF Gaming Motherboard', image: defaultImage, link: 'https://amzn.to/439O31u' },
-        { name: 'Corsair Vengeance RGB RAM', image: defaultImage, link: 'https://amzn.to/44gAC0Q' },
-        { name: 'Samsung 980 Pro SSD', image: defaultImage, link: 'https://amzn.to/4d1LqlU' },
-        { name: 'Cooler Master Hyper 212', image: defaultImage, link: 'https://amzn.to/3YTtvYw' },
-        { name: 'NZXT H510 Case', image: defaultImage, link: 'https://amzn.to/4jAsPje' },
-        { name: 'ASRock Phantom Gaming GPU', image: defaultImage, link: 'https://amzn.to/3GK0ati' },
-        { name: 'Logitech G Pro Wireless Mouse', image: defaultImage, link: 'https://amzn.to/4iKmikO' },
-        { name: 'Alienware AW3423DW Monitor', image: defaultImage, link: 'https://amzn.to/4jDbCFO' },
-        { name: 'AOC CQ32G1 Curved Monitor', image: defaultImage, link: 'https://amzn.to/3Yph1I2' },
-        { name: 'Glorious Model O Mouse', image: defaultImage, link: 'https://amzn.to/3YVpra6' }
-      
+      const defaultImage = 'assets/images/default.jpg'; // Fallback for products with missing images
+
+      const generateImageFilename = (name) => {
+        return 'assets/images/' + name + '.jpg';
+      };
+
+      $scope.products = [
+        { name: 'Logitech G502 Hero Mouse', link: 'https://www.amazon.com/gp/aw/d/B0B66RHD7B?th=1&tag=tglab0f-20' },
+        { name: 'Razer BlackWidow V3 Keyboard', link: 'https://amzn.to/42DKL6B' },
+        { name: 'Xbox Series X', link: 'https://amzn.to/3YT81eg' },
+        { name: 'PlayStation 5', link: 'https://amzn.to/4cYZwEv' },
+        { name: 'Nintendo Switch OLED', link: 'https://amzn.to/3EMs3Au' },
+        { name: 'Elgato Stream Deck', link: 'https://amzn.to/42U8Swq' },
+        { name: 'HyperX Cloud II Headset', link: 'https://amzn.to/438AzTF' },
+        { name: 'Corsair K95 RGB Platinum', link: 'https://amzn.to/4k0ZXR8' },
+        { name: 'ASUS ROG Strix Gaming Laptop', link: 'https://amzn.to/3GzVLcE' },
+        { name: 'MSI Gaming Monitor', link: 'https://amzn.to/3Gzuzuo' },
+        { name: 'SteelSeries Arctis Pro Wireless', link: 'https://amzn.to/4cVaNpp' },
+        { name: 'Logitech C920 Webcam', link: 'https://amzn.to/42yIRnI' },
+        { name: 'Razer DeathAdder V2', link: 'https://amzn.to/4lPvMhv' },
+        { name: 'Blue Yeti Microphone', link: 'https://amzn.to/4iH2TBd' },
+        { name: 'AMD Ryzen 9 5900X', link: 'https://amzn.to/3YlSNyl' },
+        { name: 'NVIDIA GeForce RTX 3080', link: 'https://amzn.to/4cVb8sb' },
+        { name: 'ASUS TUF Gaming Motherboard', link: 'https://amzn.to/439O31u' },
+        { name: 'Corsair Vengeance RGB RAM', link: 'https://amzn.to/44gAC0Q' },
+        { name: 'Samsung 980 Pro SSD', link: 'https://amzn.to/4d1LqlU' },
+        { name: 'Cooler Master Hyper 212', link: 'https://amzn.to/3YTtvYw' },
+        { name: 'NZXT H510 Case', link: 'https://amzn.to/4jAsPje' },
+        { name: 'ASRock Phantom Gaming GPU', link: 'https://amzn.to/3GK0ati' },
+        { name: 'Logitech G Pro Wireless Mouse', link: 'https://amzn.to/4iKmikO' },
+        { name: 'Alienware AW3423DW Monitor', link: 'https://amzn.to/4jDbCFO' },
+        { name: 'AOC CQ32G1 Curved Monitor', link: 'https://amzn.to/3Yph1I2' },
+        { name: 'Glorious Model O Mouse', link: 'https://amzn.to/3YVpra6' }
       ];
+
+      // Add image paths dynamically
+      $scope.products.forEach(product => {
+        product.image = generateImageFilename(product.name);
+      });
     });
   </script>
+
 </body>
 </html>

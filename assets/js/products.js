@@ -33,3 +33,11 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   });
   
+  $scope.products.forEach(product => {
+    const safeName = product.name.toLowerCase()
+      .replace(/[^a-z0-9]/gi, '-')  // Replace non-alphanumeric with dashes
+      .replace(/-+/g, '-')          // Replace multiple dashes with one
+      .replace(/^-|-$/g, '');       // Trim dashes at start/end
+    product.image = "assets/images/" + safeName + ".jpg";
+  });
+  
