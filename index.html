@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="techGroupApp">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TGLab Store</title>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body ng-controller="MainController">
 
@@ -20,13 +20,12 @@
     <a href="index.html">Home</a>
     <a href="assets/gamer.html">Gamer</a>
     <a href="assets/products.html">Products</a>
-    <a href="assets/tech.html">Tech Gadgets</a>
   </nav>
 
   <main class="container">
 
     <section class="banner-section">
-      <img class="banner img-fluid" src="assets/images/banner-gaming.jpg" alt="Gaming Banner">
+      <img class="banner img-fluid" src="assets/images/banner-gaming.jpg" alt="Gaming Banner" />
     </section>
 
     <section class="featured-products">
@@ -34,7 +33,7 @@
 
       <div class="product-grid">
         <div class="product" ng-repeat="product in products">
-          <img ng-src="{{product.image}}" alt="{{product.name}}">
+          <img ng-src="{{product.image}}" alt="{{product.name}}" />
           <p class="product-name">{{product.name}}</p>
           <a class="btn btn-primary product-btn" ng-href="{{product.link}}" target="_blank">Buy Now</a>
         </div>
@@ -56,9 +55,10 @@
     <p>&copy; 2025 TGLab Store. All Rights Reserved.</p>
   </footer>
 
+  <script src="assets/js/app.js"></script>
   <script>
     const app = angular.module('techGroupApp', []);
-    app.controller('MainController', function($scope) {
+    app.controller('MainController', function ($scope) {
       const defaultImage = 'assets/images/default.jpg'; // Local image fallback
       $scope.products = [
         { name: 'Logitech G502 Hero Mouse', image: defaultImage, link: '#' },
