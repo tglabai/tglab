@@ -4,85 +4,76 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>All Products - TechGroup</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body ng-controller="ProductsController">
-  <header>
-    <h1>TechGroup Full Catalog</h1>
-    <p>Explore our complete lineup of premium tech & gear</p>
+<body ng-controller="MainController">
+
+  <header class="site-header">
+    <h1 class="store-title">TGLab Store</h1>
+    <p class="store-subtitle">Your Best Source for Gaming Products</p>
   </header>
 
-  <nav>
+  <nav class="main-nav">
     <a href="index.html">Home</a>
     <a href="gamer.html">Gamer</a>
     <a href="products.html">Products</a>
   </nav>
 
-  <main>
-    <section class="product-grid">
-      <div class="product-card" ng-repeat="product in allProducts">
-        <a ng-href="{{ product.link }}" target="_blank">
-          <img ng-src="{{ product.image }}" alt="{{ product.name }}">
-          <h2>{{ product.name }}</h2>
-          <p class="teaser">Discover performance, power, and precision in one product. Click to learn more!</p>
-        </a>
-        <button class="add-to-cart" ng-click="addToCart(product)">Add to Cart</button>
+  <main class="container">
+
+    <section class="featured-products">
+      <div class="product-grid">
+        <div class="product" ng-repeat="product in products">
+          <img ng-src="{{product.image}}" alt="{{product.name}}" />
+          <p class="product-name">{{product.name}}</p>
+          <a class="btn btn-primary product-btn" ng-href="{{product.link}}" target="_blank">Buy Now</a>
+        </div>
       </div>
     </section>
+
   </main>
 
-  <div class="cart" ng-click="toggleCart()">
-    <span class="cart-count" ng-if="cart.length > 0">{{ cart.length }}</span>
-    <i class="fas fa-shopping-cart"></i>
-  </div>
-
-  <div ng-show="isCartVisible" class="cart-modal">
-    <div class="cart-items">
-      <ul>
-        <li ng-repeat="item in cart">
-          {{ item.name }} 
-          <button class="remove-item" ng-click="removeFromCart(item)">Remove</button>
-        </li>
-      </ul>
-    </div>
-  </div>
-
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 TechGroup. All rights reserved.</p>
-    </div>
+  <footer class="site-footer">
+    <p>&copy; 2025 TGLab Store. All Rights Reserved.</p>
   </footer>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="assets/js/app.js"></script>
   <script>
-    const app = angular.module("techGroupApp", []);
-    app.controller("ProductsController", function ($scope) {
-      const defaultImage = "https://via.placeholder.com/250x150?text=Product+Image";
-      $scope.allProducts = [
-        // Replace this array with real data if needed
-        { name: "PlayStation 5", image: defaultImage, link: "#" },
-        { name: "Razer Blade 16 Laptop", image: defaultImage, link: "#" },
-        { name: "Elgato Stream Deck", image: defaultImage, link: "#" },
+    const app = angular.module('techGroupApp', []);
+    app.controller('MainController', function ($scope) {
+      const defaultImage = 'assets/images/default.jpg'; // Local image fallback
+      $scope.products = [{ name: 'Logitech G502 Hero Mouse', image: defaultImage, link: 'https://www.amazon.com/gp/aw/d/B0B66RHD7B?th=1&tag=tglab0f-20' },
+        { name: 'Razer BlackWidow V3 Keyboard', image: defaultImage, link: 'https://amzn.to/42DKL6B' },
+        { name: 'Xbox Series X', image: defaultImage, link: 'https://amzn.to/3YT81eg' },
+        { name: 'PlayStation 5', image: defaultImage, link: 'https://amzn.to/4cYZwEv' },
+        { name: 'Nintendo Switch OLED', image: defaultImage, link: 'https://amzn.to/3EMs3Au' },
+        { name: 'Elgato Stream Deck', image: defaultImage, link: 'https://amzn.to/42U8Swq' },
+        { name: 'HyperX Cloud II Headset', image: defaultImage, link: 'https://amzn.to/438AzTF' },
+        { name: 'Corsair K95 RGB Platinum', image: defaultImage, link: 'https://amzn.to/4k0ZXR8' },
+        { name: 'ASUS ROG Strix Gaming Laptop', image: defaultImage, link: 'https://amzn.to/3GzVLcE' },
+        { name: 'MSI Gaming Monitor', image: defaultImage, link: 'https://amzn.to/3Gzuzuo' },
+        { name: 'SteelSeries Arctis Pro Wireless', image: defaultImage, link: 'https://amzn.to/4cVaNpp' },
+        { name: 'Logitech C920 Webcam', image: defaultImage, link: 'https://amzn.to/42yIRnI' },
+        { name: 'Razer DeathAdder V2', image: defaultImage, link: 'https://amzn.to/4lPvMhv' },
+        { name: 'Blue Yeti Microphone', image: defaultImage, link: 'https://amzn.to/4iH2TBd' },
+        { name: 'AMD Ryzen 9 5900X', image: defaultImage, link: 'https://amzn.to/3YlSNyl' },
+        { name: 'NVIDIA GeForce RTX 3080', image: defaultImage, link: 'https://amzn.to/4cVb8sb' },
+        { name: 'ASUS TUF Gaming Motherboard', image: defaultImage, link: 'https://amzn.to/439O31u' },
+        { name: 'Corsair Vengeance RGB RAM', image: defaultImage, link: 'https://amzn.to/44gAC0Q' },
+        { name: 'Samsung 980 Pro SSD', image: defaultImage, link: 'https://amzn.to/4d1LqlU' },
+        { name: 'Cooler Master Hyper 212', image: defaultImage, link: 'https://amzn.to/3YTtvYw' },
+        { name: 'NZXT H510 Case', image: defaultImage, link: 'https://amzn.to/4jAsPje' },
+        { name: 'ASRock Phantom Gaming GPU', image: defaultImage, link: 'https://amzn.to/3GK0ati' },
+        { name: 'Logitech G Pro Wireless Mouse', image: defaultImage, link: 'https://amzn.to/4iKmikO' },
+        { name: 'Alienware AW3423DW Monitor', image: defaultImage, link: 'https://amzn.to/4jDbCFO' },
+        { name: 'AOC CQ32G1 Curved Monitor', image: defaultImage, link: 'https://amzn.to/3Yph1I2' },
+        { name: 'Glorious Model O Mouse', image: defaultImage, link: 'https://amzn.to/3YVpra6' }
+      
       ];
-
-      $scope.cart = [];
-      $scope.isCartVisible = false;
-      
-      $scope.addToCart = function(product) {
-        $scope.cart.push(product);
-      };
-      
-      $scope.removeFromCart = function(item) {
-        const index = $scope.cart.indexOf(item);
-        if (index !== -1) {
-          $scope.cart.splice(index, 1);
-        }
-      };
-      
-      $scope.toggleCart = function() {
-        $scope.isCartVisible = !$scope.isCartVisible;
-      };
     });
   </script>
 </body>

@@ -24,12 +24,10 @@
 
   <main class="container">
 
-    <section class="banner-section">
-      <img class="banner img-fluid" src="assets/images/banner-gaming.jpg" alt="Gaming Banner" />
-    </section>
+ >
 
     <section class="featured-products">
-      <h2 class="section-title">Top Gamer Picks</h2>
+      <h2 class="section-title">Consoles</h2>
 
       <div class="product-grid">
         <div class="product" ng-repeat="product in products">
@@ -40,15 +38,7 @@
       </div>
     </section>
 
-    <section class="news-section">
-      <h3 class="section-title">Gaming News</h3>
-      <ul class="news-list">
-        <li class="news-item"><strong>Epic Games:</strong> Announces Unreal Engine 6 Preview.</li>
-        <li class="news-item"><strong>Steam Deals:</strong> Big discounts on AAA titles this weekend.</li>
-        <li class="news-item"><strong>PS5 Update:</strong> New DualSense Edge features revealed.</li>
-      </ul>
-    </section>
-
+   
   </main>
 
   <footer class="site-footer">
@@ -61,10 +51,11 @@
     app.controller('MainController', function ($scope) {
       const defaultImage = 'assets/images/default.jpg'; // Local image fallback
       $scope.products = [
-        { name: 'Logitech G502 Hero Mouse', image: defaultImage, link: '#' },
-        { name: 'Razer BlackWidow V3 Keyboard', image: defaultImage, link: '#' },
-        { name: 'Xbox Series X', image: defaultImage, link: '#' },
-        // ...add more products
+         // 🎮 Consoles
+  { name: 'Xbox Series X', image: defaultImage, link: 'https://amzn.to/3YT81eg', category: 'Consoles' },
+  { name: 'PlayStation 5', image: defaultImage, link: 'https://amzn.to/4cYZwEv', category: 'Consoles' },
+  { name: 'Nintendo Switch OLED', image: defaultImage, link: 'https://amzn.to/3EMs3Au', category: 'Consoles' },
+
       ];
     });
   </script>
